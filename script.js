@@ -85,7 +85,7 @@ function calculateSaleAmount() {
 
 /**
  * 遅延計算を実行する関数
- * 入力後500ms待ってから計算を実行する
+ * 入力後1000ms待ってから計算を実行する
  */
 function delayedCalculate() {
     // 既存のタイマーをクリア
@@ -93,11 +93,11 @@ function delayedCalculate() {
         clearTimeout(calculationTimer);
     }
 
-    // 500ms後に計算を実行するタイマーを設定
+    // 1000ms後に計算を実行するタイマーを設定
     calculationTimer = setTimeout(function () {
         calculateSaleAmount();
         calculationTimer = null;
-    }, 500);
+    }, 1000);
 }
 
 /**
