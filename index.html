@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>投資信託 取り崩し計算機</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- カスタムCSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <!-- ヘッダー -->
+                <div class="header-container mb-4">
+                    <div class="text-center">
+                        <h1 class="h2 mb-1">投資信託 取り崩し計算機</h1>
+                        <p class="text-muted">必要な手取り金額を入力すると、税金を考慮した取り崩し金額を逆算します。</p>
+                    </div>
+                </div>
+
+                <!-- カード -->
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-custom">
+                        <h5 class="card-title mb-0">入力</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="calculationForm">
+                            <div class="mb-3">
+                                <label for="requiredCash" class="form-label">必要な手取り金額（円）</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="requiredCash" required min="0">
+                                    <span class="input-group-text">円</span>
+                                </div>
+                                <div class="form-text">手元に必要な金額を入力してください</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="profitLoss" class="form-label">評価損益（円）</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="profitLoss" required>
+                                    <span class="input-group-text">円</span>
+                                </div>
+                                <div class="form-text">投資信託の現在の評価損益を入力してください</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="currentValue" class="form-label">保有金額（円）</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="currentValue" required min="0">
+                                    <span class="input-group-text">円</span>
+                                </div>
+                                <div class="form-text">投資信託の現在の保有金額を入力してください</div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="accountType" class="form-label">預り区分</label>
+                                <select class="form-select" id="accountType">
+                                    <option value="tokutei" selected>特定・一般（税率20.315%）</option>
+                                    <option value="nisa">NISA（非課税）</option>
+                                </select>
+                                <div class="form-text">口座の預り区分を選択してください</div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- 結果表示カード -->
+                <div id="resultCard" class="card shadow-sm mb-4 result-card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title mb-0">計算結果</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <h6>取り崩し金額</h6>
+                                <h4 id="saleAmount" class="text-primary">0円</h4>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <h6>取り崩し割合</h6>
+                                <h4 id="saleRatio" class="text-success">0%</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6 mb-3">
+                                <h6>税金額</h6>
+                                <h4 id="taxAmount" class="text-danger">0円</h4>
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <h6>手取り金額</h6>
+                                <h4 id="netAmount" class="text-info">0円</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- カスタムJS -->
+    <script src="script.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
