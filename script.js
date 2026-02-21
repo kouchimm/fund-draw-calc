@@ -1,12 +1,12 @@
 /**
- * 投資信託取り崩し金額計算アプリのメインスクリプト
+ * 投資信託売却金額計算アプリのメインスクリプト
  */
 
 // 計算タイマー用の変数
 let calculationTimer = null;
 
 /**
- * 取り崩し金額を計算する関数
+ * 売却金額を計算する関数
  */
 function calculateSaleAmount() {
     // 入力値の取得
@@ -84,8 +84,8 @@ function calculateSaleAmount() {
 }
 
 /**
- * 遅延計算を実行する関数
- * 入力後1000ms待ってから計算を実行する
+ * 遅延計算を実行
+ * 入力後1500ms待ってから計算を実行する
  */
 function delayedCalculate() {
     // 既存のタイマーをクリア
@@ -93,11 +93,11 @@ function delayedCalculate() {
         clearTimeout(calculationTimer);
     }
 
-    // 1000ms後に計算を実行するタイマーを設定
+    // 1500ms後に計算を実行するタイマーを設定
     calculationTimer = setTimeout(function () {
         calculateSaleAmount();
         calculationTimer = null;
-    }, 1000);
+    }, 1500);
 }
 
 /**
